@@ -1,12 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
+[ext_resource path="res://Obstacle.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ground.png" type="Texture" id=2]
 [ext_resource path="res://vase.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Game.gd" type="Script" id=4]
+[ext_resource path="res://floor.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 578.316, 58.4486 )
 
 [node name="Game" type="Node2D"]
+script = ExtResource( 4 )
 
 [node name="Ground" type="Sprite" parent="."]
 position = Vector2( 476, 545 )
@@ -14,6 +18,7 @@ scale = Vector2( 1.28584, 0.90678 )
 texture = ExtResource( 2 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Ground"]
+script = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D"]
 visible = false
@@ -23,4 +28,13 @@ shape = SubResource( 1 )
 [node name="slingshot" type="Line2D" parent="."]
 
 [node name="RigidBody2D" parent="." instance=ExtResource( 3 )]
-position = Vector2( 97, 344 )
+position = Vector2( 612, 299 )
+
+[node name="Hard Obstacle" parent="." instance=ExtResource( 1 )]
+position = Vector2( 617, 459 )
+
+[connection signal="resetJump" from="RigidBody2D" to="RigidBody2D/VectorMaker" method="resetJump"]
+[connection signal="bodyEntered" from="Hard Obstacle" to="RigidBody2D" method="_on_Hard_Obstacle_bodyEntered"]
+[connection signal="resetJump" from="Hard Obstacle" to="RigidBody2D" method="resetJump"]
+[connection signal="timerStart" from="Hard Obstacle" to="Hard Obstacle/Timer" method="timerStart"]
+[connection signal="timerStop" from="Hard Obstacle" to="Hard Obstacle/Timer" method="timerStop"]

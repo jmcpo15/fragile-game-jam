@@ -18,4 +18,5 @@ texture = ExtResource( 1 )
 
 [node name="VectorMaker" parent="." instance=ExtResource( 4 )]
 
+[connection signal="resetJump" from="." to="VectorMaker" method="resetJump"]
 [connection signal="vectorCreated" from="VectorMaker" to="." method="launch"]
