@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Crack2_Wet.wav-bb40de97772504f3f17297563972132f.sample"
+
+[deps]
+
+source_file="res://Sounds/Sound Assets/Cracks/Crack2_Wet.wav"
+dest_files=[ "res://.import/Crack2_Wet.wav-bb40de97772504f3f17297563972132f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

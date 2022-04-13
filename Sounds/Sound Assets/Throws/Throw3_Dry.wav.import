@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Throw3_Dry.wav-7097982e5de3a2e48d5b3f6fdee201f2.sample"
+
+[deps]
+
+source_file="res://Sounds/Sound Assets/Throws/Throw3_Dry.wav"
+dest_files=[ "res://.import/Throw3_Dry.wav-7097982e5de3a2e48d5b3f6fdee201f2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

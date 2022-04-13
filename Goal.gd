@@ -29,4 +29,4 @@ func goalExited(body):
 
 
 func _on_Timer_timeout():
-	get_tree().change_scene("res://level "+str(int(get_tree().current_scene.name)+1))
+	get_tree().change_scene("res://Game.tscn")

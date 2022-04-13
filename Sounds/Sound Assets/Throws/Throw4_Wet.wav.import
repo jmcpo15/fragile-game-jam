@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Throw4_Wet.wav-48ea04e115008c681c87b1eb1027379d.sample"
+
+[deps]
+
+source_file="res://Sounds/Sound Assets/Throws/Throw4_Wet.wav"
+dest_files=[ "res://.import/Throw4_Wet.wav-48ea04e115008c681c87b1eb1027379d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Smash2_Full.wav-9ba6a5316fde5b78b23af99bdb3c0b95.sample"
+
+[deps]
+
+source_file="res://Sounds/Sound Assets/Smashes/Smash2_Full.wav"
+dest_files=[ "res://.import/Smash2_Full.wav-9ba6a5316fde5b78b23af99bdb3c0b95.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

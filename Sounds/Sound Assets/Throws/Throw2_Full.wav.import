@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Throw2_Full.wav-0f807473e8314012a271386ef950275d.sample"
+
+[deps]
+
+source_file="res://Sounds/Sound Assets/Throws/Throw2_Full.wav"
+dest_files=[ "res://.import/Throw2_Full.wav-0f807473e8314012a271386ef950275d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
