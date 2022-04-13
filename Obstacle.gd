@@ -6,12 +6,8 @@ signal resetJump
 
 var timerOn = false
 
-
-func id():
-	return 0
-
 func _on_Area2D_body_entered(body):
-	if body.id() == 2:
+	if body.is_in_group("Player"):
 		emit_signal("bodyEntered")
 		emit_signal("timerStart")
 		timerOn = true

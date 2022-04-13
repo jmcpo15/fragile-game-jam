@@ -13,7 +13,7 @@ extents = Vector2( 578.316, 58.4486 )
 script = ExtResource( 4 )
 
 [node name="Ground" type="Sprite" parent="."]
-position = Vector2( 476, 545 )
+position = Vector2( 473, 616 )
 scale = Vector2( 1.28584, 0.90678 )
 texture = ExtResource( 2 )
 
@@ -25,16 +25,19 @@ visible = false
 position = Vector2( -0.555511, -0.551392 )
 shape = SubResource( 1 )
 
-[node name="slingshot" type="Line2D" parent="."]
-
 [node name="RigidBody2D" parent="." instance=ExtResource( 3 )]
-position = Vector2( 612, 299 )
+position = Vector2( 36, 438 )
+gravity_scale = 1.5
 
 [node name="Hard Obstacle" parent="." instance=ExtResource( 1 )]
-position = Vector2( 617, 459 )
+position = Vector2( 609, 457 )
+
+[node name="Hard Obstacle2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 509, 522 )
+scale = Vector2( 20, 1 )
 
 [connection signal="resetJump" from="RigidBody2D" to="RigidBody2D/VectorMaker" method="resetJump"]
 [connection signal="bodyEntered" from="Hard Obstacle" to="RigidBody2D" method="_on_Hard_Obstacle_bodyEntered"]
 [connection signal="resetJump" from="Hard Obstacle" to="RigidBody2D" method="resetJump"]
-[connection signal="timerStart" from="Hard Obstacle" to="Hard Obstacle/Timer" method="timerStart"]
-[connection signal="timerStop" from="Hard Obstacle" to="Hard Obstacle/Timer" method="timerStop"]
+[connection signal="bodyEntered" from="Hard Obstacle2" to="RigidBody2D" method="_on_Hard_Obstacle_bodyEntered"]
+[connection signal="resetJump" from="Hard Obstacle2" to="RigidBody2D" method="resetJump"]
