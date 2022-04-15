@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Sprites/Hard Bit.png" type="Texture" id=1]
+[ext_resource path="res://Obstacle.gd" type="Script" id=2]
+[ext_resource path="res://ContactTimer.gd" type="Script" id=3]
+
+[node name="Pillar" type="StaticBody2D"]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -75, -73, 51, -73, 51, -37, 45, -37, 45, -31, 27, -31, 27, 47, 33, 47, 33, 52.5, 39, 52.5, 39, 59, 45, 59, 45, 65, 51, 65, 51, 83, -63, 83, -63, 59, -57, 59, -57, 47, -51, 47, -51, -31, -69, -31, -69, -37, -75, -37 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="areaShape" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PoolVector2Array( -75.5, -73.5, 51.5, -73.5, 51.5, -37.5, 45.5, -37.5, 45.5, -31.5, 27.5, -31.5, 27.5, 47.5, 33.5, 47.5, 33.5, 53, 39.5, 53, 39.5, 59.5, 45.5, 59.5, 45.5, 65.5, 51.5, 65.5, 51.5, 83.5, -63.5, 83.5, -63.5, 59.5, -57.5, 59.5, -57.5, 47.5, -51.5, 47.5, -51.5, -31.5, -69.5, -31.5, -69.5, -37.5, -75.5, -37.5 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+script = ExtResource( 3 )
+
+[connection signal="timerStart" from="." to="Timer" method="timerStart"]
+[connection signal="timerStop" from="." to="Timer" method="timerStop"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="timerTimeout"]

@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Obstacle.tscn" type="PackedScene" id=1]
-[ext_resource path="res://ground.png" type="Texture" id=2]
+[ext_resource path="res://SoftObstacle.tscn" type="PackedScene" id=2]
 [ext_resource path="res://vase.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Game.gd" type="Script" id=4]
 [ext_resource path="res://floor.gd" type="Script" id=5]
+[ext_resource path="res://softPillarBottom.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 578.316, 58.4486 )
@@ -15,7 +16,6 @@ script = ExtResource( 4 )
 [node name="Ground" type="Sprite" parent="."]
 position = Vector2( 473, 616 )
 scale = Vector2( 1.28584, 0.90678 )
-texture = ExtResource( 2 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Ground"]
 script = ExtResource( 5 )
@@ -25,23 +25,62 @@ visible = false
 position = Vector2( -0.555511, -0.551392 )
 shape = SubResource( 1 )
 
-[node name="RigidBody2D" parent="." instance=ExtResource( 3 )]
-position = Vector2( 36, 438 )
+[node name="Vase" parent="." instance=ExtResource( 3 )]
+position = Vector2( 95, 210 )
 gravity_scale = 1.5
 
 [node name="Hard Obstacle" parent="." instance=ExtResource( 1 )]
-position = Vector2( 609, 457 )
+position = Vector2( 603, 398 )
 
 [node name="Hard Obstacle2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 509, 522 )
+position = Vector2( 515, 575 )
 scale = Vector2( 20, 1 )
 
-[connection signal="resetJump" from="RigidBody2D" to="RigidBody2D/VectorMaker" method="resetJump"]
-[connection signal="bodyEntered" from="Hard Obstacle" to="RigidBody2D" method="_on_Hard_Obstacle_bodyEntered"]
-[connection signal="resetJump" from="Hard Obstacle" to="RigidBody2D" method="resetJump"]
+[node name="softObstacle" parent="." instance=ExtResource( 2 )]
+position = Vector2( 89, 324 )
+
+[node name="Pillar" parent="." instance=ExtResource( 6 )]
+position = Vector2( 96, 405 )
+
+[node name="softObstacle2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 370, 324 )
+
+[node name="Pillar2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 377, 405 )
+
+[node name="softObstacle3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 863, 322 )
+
+[node name="Pillar3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 870, 403 )
+
+[connection signal="resetJump" from="Vase" to="Vase/VectorMaker" method="resetJump"]
+[connection signal="bodyEntered" from="Hard Obstacle" to="Vase" method="_on_Hard_Obstacle_bodyEntered"]
+[connection signal="resetJump" from="Hard Obstacle" to="Vase" method="resetJump"]
 [connection signal="timerStart" from="Hard Obstacle" to="Hard Obstacle/Timer" method="timerStart"]
 [connection signal="timerStop" from="Hard Obstacle" to="Hard Obstacle/Timer" method="timerStop"]
-[connection signal="bodyEntered" from="Hard Obstacle2" to="RigidBody2D" method="_on_Hard_Obstacle_bodyEntered"]
-[connection signal="resetJump" from="Hard Obstacle2" to="RigidBody2D" method="resetJump"]
+[connection signal="bodyEntered" from="Hard Obstacle2" to="Vase" method="_on_Hard_Obstacle_bodyEntered"]
+[connection signal="resetJump" from="Hard Obstacle2" to="Vase" method="resetJump"]
 [connection signal="timerStart" from="Hard Obstacle2" to="Hard Obstacle2/Timer" method="timerStart"]
 [connection signal="timerStop" from="Hard Obstacle2" to="Hard Obstacle2/Timer" method="timerStop"]
+[connection signal="resetJump" from="softObstacle" to="Vase" method="resetJump"]
+[connection signal="timerStart" from="softObstacle" to="softObstacle/Timer" method="timerStart"]
+[connection signal="timerStop" from="softObstacle" to="softObstacle/Timer" method="timerStop"]
+[connection signal="bodyEntered" from="Pillar" to="Vase" method="_on_Hard_Obstacle_bodyEntered"]
+[connection signal="resetJump" from="Pillar" to="Vase" method="resetJump"]
+[connection signal="timerStart" from="Pillar" to="Pillar/Timer" method="timerStart"]
+[connection signal="timerStop" from="Pillar" to="Pillar/Timer" method="timerStop"]
+[connection signal="resetJump" from="softObstacle2" to="Vase" method="resetJump"]
+[connection signal="timerStart" from="softObstacle2" to="softObstacle2/Timer" method="timerStart"]
+[connection signal="timerStop" from="softObstacle2" to="softObstacle2/Timer" method="timerStop"]
+[connection signal="bodyEntered" from="Pillar2" to="Vase" method="_on_Hard_Obstacle_bodyEntered"]
+[connection signal="resetJump" from="Pillar2" to="Vase" method="resetJump"]
+[connection signal="timerStart" from="Pillar2" to="Pillar2/Timer" method="timerStart"]
+[connection signal="timerStop" from="Pillar2" to="Pillar2/Timer" method="timerStop"]
+[connection signal="resetJump" from="softObstacle3" to="Vase" method="resetJump"]
+[connection signal="timerStart" from="softObstacle3" to="softObstacle3/Timer" method="timerStart"]
+[connection signal="timerStop" from="softObstacle3" to="softObstacle3/Timer" method="timerStop"]
+[connection signal="bodyEntered" from="Pillar3" to="Vase" method="_on_Hard_Obstacle_bodyEntered"]
+[connection signal="resetJump" from="Pillar3" to="Vase" method="resetJump"]
+[connection signal="timerStart" from="Pillar3" to="Pillar3/Timer" method="timerStart"]
+[connection signal="timerStop" from="Pillar3" to="Pillar3/Timer" method="timerStop"]

@@ -1,7 +1,7 @@
 extends Area2D
 
 signal vectorCreated(vector)
-export var maxLength = 225
+export var maxLength = 275
 
 var touchDown = false
 var groundContact

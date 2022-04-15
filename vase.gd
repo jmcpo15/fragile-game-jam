@@ -1,8 +1,13 @@
 extends RigidBody2D
 
 signal resetJump
+signal damageSprite
+signal destroy
 
 var damage
+var damageTime
+var damageFreeze = false
+var linearVelocity
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -13,6 +18,7 @@ var damage
 func _ready():
 	add_to_group("Player")
 	damage = 0
+	damageTime = 0
 	set_bounce(0.1)
 	set_friction(0.8)
 	
@@ -22,13 +28,21 @@ func launch(force : Vector2) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	linearVelocity = get_linear_velocity().length()
 
 func hardObstacleCollision():
-	damage += 1
-	print(damage)
-	if damage > 3:
-		get_tree().reload_current_scene()
+	if (((damageTime + 1000 < OS.get_ticks_msec() and get_linear_velocity().length() > 100) or (damageTime + 2000 < OS.get_ticks_msec() and get_linear_velocity().length() > 25)) and not damageFreeze):
+		damage += 1
+		damageTime = OS.get_ticks_msec()
+		print(get_linear_velocity().length())
+		if damage > 2:
+			set_sleeping(true)
+			emit_signal("destroy")
+			$smash1.play()
+			damageFreeze = true
+		else:
+			emit_signal("damageSprite")
+			$crack1.play()
 
 
 func _on_Hard_Obstacle_bodyEntered():
@@ -37,3 +51,12 @@ func _on_Hard_Obstacle_bodyEntered():
 
 func resetJump():
 	emit_signal("resetJump")
+
+
+
+func smashFinish():
+	get_tree().reload_current_scene()
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	hide()

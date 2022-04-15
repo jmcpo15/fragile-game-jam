@@ -1,4 +1,4 @@
-extends Node2D
+extends AnimationPlayer
 
 
 # Declare member variables here. Examples:
@@ -16,3 +16,5 @@ func _ready():
 #	pass
 
 
+func _on_Vase_destroy():
+	play("esplode")
